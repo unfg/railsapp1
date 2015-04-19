@@ -57,12 +57,29 @@
                 <country_of_origin>Япония</country_of_origin>
             </offer>
 
+	    <offer id="123411" type="vendor.model" bid="13" cbid="20" available="true">
+                <url></url>
+                <price>15000</price>
+                <currencyId>RUR</currencyId>
+                <categoryId type="Own">101</categoryId>
+                <picture></picture>
+                <delivery>true</delivery>
+                <local_delivery_cost>300</local_delivery_cost>
+                <typePrefix>Принтер</typePrefix>
+                <vendor>НP</vendor>
+                <vendorCode>Q7533A</vendorCode>
+                <cmodel>Color LaserJet 3000</cmodel>
+                <cdescription>A4, 64Mb, 600x600 dpi, USB 2.0, 29стр/мин ч/б / 15стр/мин цв, лотки на 100л и 250л, плотность до 175г/м, до 60000 стр/месяц </cdescription>
+                <manufacturer_warranty>true</manufacturer_warranty>
+                <country_of_origin>Япония</country_of_origin>
+            </offer>
+
             <offer id="12342" type="book" bid="17" available="true">
-                <url>http://magazin.ru/product_page.asp?pid=14345</url>
+                <url></url>
                 <price>100</price>
                 <currencyId>RUR</currencyId>
                 <categoryId type="Own">13</categoryId>
-                <picture>http://magazin.ru/img/book14345.jpg</picture>
+                <picture></picture>
                 <delivery>true</delivery>
                 <local_delivery_cost>300</local_delivery_cost>
                 <author>Александра Маринина</author>

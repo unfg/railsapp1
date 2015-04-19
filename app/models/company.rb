@@ -12,14 +12,16 @@ class Company < ActiveRecord::Base
 
       if xml_offers.count > 0 && self.persisted?
 	self.offers.destroy_all
-	#Rails.logger.debug("xmlparse: #{@uploaded_file.original_filename.to_s}")
-	#raise "error"
       end
-      #raise "error2"
+
       xml_offers.each do |xml_offer|
+	next if xml_offer.xpath('.//model').first.blank? || xml_offer.xpath('.//model').first.content.blank?
+	next if xml_offer.xpath('.//picture').first.blank? || xml_offer.xpath('.//picture').first.content.blank?
+	next if xml_offer.xpath('.//description').first.blank? || xml_offer.xpath('.//description').first.content.blank?
+	next if xml_offer.xpath('.//url').first.blank? || xml_offer.xpath('.//url').first.content.blank?
+	
 	new_offer = Offer.create(title: xml_offer.xpath('.//model').first.content, picture: xml_offer.xpath('.//picture').first.content, description: xml_offer.xpath('.//description').first.content, url: xml_offer.xpath('.//url').first.content)
 	self.offers << new_offer
-	
 	
       end
       
