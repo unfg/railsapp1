@@ -4,19 +4,26 @@
   <strong>Title:</strong>
   <%= @company.title %>
 </p>
-
+<% if @company.last_file_date.present? %>
 <p>
   <strong>Last file date:</strong>
   <%= @company.last_file_date %>
 </p>
+<% end %>
 
+<% if @company.last_file_date.present? %>
 <p>
   <strong>Last file name:</strong>
   <%= @company.last_file_name %>
 </p>
+<% end %>
+
+<p>
+  <%= render 'xmlform' %>
+</p>
 
 <h2>Offers list:</h2>
-<% if @company.offers.exists? %>
+<% if @company.offers.present? %>
   <table>
     <thead>
       <tr>

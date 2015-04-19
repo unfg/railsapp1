@@ -1,0 +1,7 @@
+<div class="field">
+  <%= form_tag({action: :show}, method: :patch, multipart: true) do %>
+    <%= label_tag(:xmlfile, "Upload XML with company offers here:") %>
+    <%= file_field_tag 'xmlfile' %><br>
+    <%= submit_tag("Обработать XML") %>
+  <% end %>
+</div>

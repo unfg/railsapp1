@@ -1,4 +1,4 @@
-<%= form_for(@company) do |f| %>
+<%= form_for(@company, :html => { :multipart => true }) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -16,13 +16,10 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :last_file_date %><br>
-    <%= f.datetime_select :last_file_date %>
+      <%= label_tag(:uploadfile, "Upload XML with company offers here:") %>
+      <%= file_field_tag 'xmlfile' %>
   </div>
-  <div class="field">
-    <%= f.label :last_file_name %><br>
-    <%= f.text_field :last_file_name %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

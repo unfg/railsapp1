@@ -25,6 +25,12 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
+    
+    uploaded_file = params[:xmlfile]
+    
+    if uploaded_file.present?
+      @company.uploaded_file = uploaded_file
+    end
 
     respond_to do |format|
       if @company.save
@@ -40,6 +46,13 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
+
+    uploaded_file = params[:xmlfile]
+    
+    if uploaded_file.present?
+      @company.uploaded_file = uploaded_file
+    end
+
     respond_to do |format|
       if @company.update(company_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
@@ -69,6 +82,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:title, :last_file_date, :last_file_name)
+      params.permit(:title, :last_file_date, :last_file_name)
     end
 end
