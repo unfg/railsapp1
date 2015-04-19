@@ -15,5 +15,29 @@
   <%= @company.last_file_name %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<h2>Offers list:</h2>
+<% if @company.offers.exists? %>
+  <table>
+    <thead>
+      <tr>
+	<th>Title</th>
+	<th>Picture</th>
+	<th>Description</th>
+	<th>Url</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @company.offers.each do |offer| %>
+	<tr>
+	  <td><%= offer.title %></td>
+	  <td><%= image_tag(offer.picture) %></td>
+	  <td><%= offer.description %></td>
+	  <td><%= link_to 'Ссылка на оффер', offer.url %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  no offers
+<% end %>
