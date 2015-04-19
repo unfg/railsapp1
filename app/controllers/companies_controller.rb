@@ -48,13 +48,18 @@ class CompaniesController < ApplicationController
   def update
 
     uploaded_file = params[:xmlfile]
-    
+    company_update_params = params.permit(:title)
+
     if uploaded_file.present?
       @company.uploaded_file = uploaded_file
     end
+    
+    if params[:only_xml_update].blank?
+      company_update_params = company_params
+    end
 
     respond_to do |format|
-      if @company.update(company_params)
+      if @company.update(company_update_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
@@ -82,6 +87,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.permit(:title, :last_file_date, :last_file_name)
+      params.require(:company).permit(:title, :last_file_date, :last_file_name)
     end
 end

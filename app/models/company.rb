@@ -10,7 +10,7 @@ class Company < ActiveRecord::Base
       xml_offers = doc.xpath('.//offer[@type="vendor.model"]')
       xmlfile.close
 
-      if xml_offers.count > 0 && self.persisted?
+      if self.offers.count > 0 && self.persisted?
 	self.offers.destroy_all
       end
 
